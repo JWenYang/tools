@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%level] - %logger{500} - [%X{HTTP_HEADER_TRACE_ID}] [%X{HTTP_HEADER_SPAN_ID}] [%X{HTTP_HEADER_PARENT_SPAN_ID}] %msg%n"/>
+    <property name="LOG_PATH" value="logs"/>
+
+    <appender name="FILE_TIME_BASE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/tools.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <maxHistory>365</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE_TIME_BASE"/>
+    </root>
+    <!-- 为某个包下的所有类的指定Appender 这里也可以指定类名称例如：com.aa.bb.ClassName -->
+<!--    <logger name="org.apache.http" additivity="false">-->
+<!--        <level value="INFO"/>-->
+<!--    </logger>-->
+
+</configuration>

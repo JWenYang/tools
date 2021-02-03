@@ -1,0 +1,21 @@
+# 应用名称
+spring:
+  application:
+      name: tools
+  webflux:
+    base-path: /tools
+  redis:
+    sentinel:
+      master: mymaster
+      nodes: 10.0.252.38:26379,10.0.252.38:26381,10.0.252.38:26380
+    password: ebiz2020
+    database: 9
+
+server:
+  port: 2822
+
+logging:
+  level:
+    org.springframework: info
+    com.xuelei: debug
+
