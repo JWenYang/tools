@@ -20,9 +20,6 @@ public class RedisUtil {
     @Autowired
     private void RedisUtils(RedisTemplate redisTemplate){
         this.redisTemplate = redisTemplate;
-        if(null != this.redisTemplate) {
-            log.debug("redisTemplate loading complete");
-        }
     }
 
     public static void setValue(String key, Map<String, Object> value ,long timeout ,TimeUnit timeUnit) {
