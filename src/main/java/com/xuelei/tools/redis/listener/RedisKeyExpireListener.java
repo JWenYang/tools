@@ -1,5 +1,7 @@
 package com.xuelei.tools.redis.listener;
 
+import com.xuelei.tools.redis.enums.Enums;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +37,11 @@ public class RedisKeyExpireListener extends KeyExpirationEventMessageListener{
     public void onMessage(Message message, byte[] pattern) {
         //super.onMessage(message, pattern);
         log.info("expire key : {} {}",message.toString(),new String(pattern, Charset.forName("utf-8")));
-        realSubject.addObserver(realObserver);
-        realSubject.makeChange(message.toString());
+        //模拟订单逾期关闭
+        if(StringUtils.startsWith(message.toString(), Enums.EXPIRED0.getPrefix())) {
+            realSubject.addObserver(realObserver);
+            realSubject.makeChange(message.toString());
+        }
 
     }
 }

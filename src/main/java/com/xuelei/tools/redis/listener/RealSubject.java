@@ -3,7 +3,6 @@ package com.xuelei.tools.redis.listener;
 import org.springframework.stereotype.Component;
 
 import java.util.Observable;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 观察主题

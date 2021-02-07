@@ -17,6 +17,9 @@ public class RealObserver implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
+        if(observable instanceof RealSubject) {
+            log.info("1object:{}",o);
+        }
         log.info("object:{}",o);
     }
 }
