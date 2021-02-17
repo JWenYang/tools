@@ -16,7 +16,7 @@ server:
 
 logging:
   level:
-    org.springframework: info
+    org.springframework: debug
     com.xuelei: debug
 
 

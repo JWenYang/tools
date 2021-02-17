@@ -18,7 +18,7 @@ public class AliyunPayUtil {
     public static AlipayTradePagePayResponse payByPage(OrderVO orderVO) throws Exception {
         //1、网站跳转
         return Factory.Payment.Page()
-                .pay(orderVO.getName(), orderVO.getOrderNo(), orderVO.getPrice().toString(),"1111");
+                .pay(orderVO.getName(), orderVO.getOrderNo(), orderVO.getPrice().toString(),"https://it.yusys.com.cn/yusys/main.asp");
     }
 
     public static AlipayTradePayResponse payByBarCode(OrderVO orderVO) throws Exception {
