@@ -1,13 +1,52 @@
 package com.xuelei.tools;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.parser.ParserConfig;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.SerializationException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.nio.charset.Charset;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Test_ {
+
+    @Test
+    public void test7(){
+        Node node0 = new Node();
+        node0.setV(2);
+        Node node1 = new Node();
+        node1.setV(2);
+        Node node2 = new Node();
+        node2.setV(4);
+        node0.setR(node1);
+        node0.setL(node2);
+        Map<String, Map<String, String>> hashMap = new HashMap<String, Map<String, String>>();
+        HashMap<String, String> hashMap1 = new HashMap<String, String>();
+        hashMap1.put("1", "1");
+        hashMap.put("1", hashMap1);
+        new HashMap<String, String>() {{
+            put("1", "1");
+        }};
+        new HashMap<String, Map<String, String>>(){{
+            put("1",new HashMap<String, String>(){{
+                put("1", "1");
+            }});
+        }};
+
+        String s = JSON.toJSONString(hashMap1, SerializerFeature.WriteClassName);
+
+        System.out.println(s);
+        Map map = JSON.parseObject(s);
+
+        System.out.println();
+    }
 
     @Test
     public void test0(){

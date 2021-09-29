@@ -1,5 +1,6 @@
 package com.xuelei.tools.redis.listener;
 
+import cn.hutool.core.util.IdcardUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

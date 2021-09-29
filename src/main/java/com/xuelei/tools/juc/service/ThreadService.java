@@ -11,7 +11,7 @@ public class ThreadService {
 
     private final static Logger log = LoggerFactory.getLogger(ThreadService.class);
 
-    private ReentrantLock reentrantLock = new ReentrantLock();
+    private final ReentrantLock reentrantLock = new ReentrantLock(false);
 
     private volatile int a = 0;
 
@@ -41,7 +41,7 @@ public class ThreadService {
                 Thread.sleep(20);
                 reentrantLock.lock();
                 this.a += a;
-                log.info("{},{}", Thread.currentThread().getName(), this.a);
+                log.debug("{},{}", Thread.currentThread().getName(), this.a);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {

@@ -4,6 +4,7 @@ import com.xuelei.tools.juc.service.ThreadService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -63,8 +64,14 @@ public class ThreadController {
         threadService.reset();
         threadService.setA(1);
         threadService.setA(1);
-        log.info("date of userd :{}", System.currentTimeMillis() - s);
+        log.debug("date of userd :{}", System.currentTimeMillis() - s);
 
         return Mono.just(new ResponseEntity<>(HttpStatus.OK));
+    }
+
+
+    public ResponseEntity AA(){
+
+        return ResponseEntity.ok().body(new ClassPathResource(""));
     }
 }

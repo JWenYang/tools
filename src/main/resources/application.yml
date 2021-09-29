@@ -14,11 +14,6 @@ server:
   servlet:
     context-path: /tools
 
-logging:
-  level:
-    org.springframework: debug
-    com.xuelei: debug
-
 
 # alipay appid 2016101500691575
 # alipay gateway https://openapi.alipaydev.com/gateway.do
